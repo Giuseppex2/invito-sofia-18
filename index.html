@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18° Compleanno di Sofia</title>
+
+    <meta property="og:title" content="Sei invitato ai 18 anni di Sofia! 🎉">
+    <meta property="og:description" content="Clicca qui per aprire il tuo invito speciale e scoprire tutti i dettagli della serata. Ti aspetto!">
+    <meta property="og:type" content="website">
+    
+    <meta property="og:image" content="immagini/anteprima.jpg">
+    <meta property="og:url" content="INSERISCI_QUI_IL_LINK_DEL_SITO_QUANDO_SARA_ONLINE">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container-invito">
+        
+        <div class="busta" id="busta">
+            
+            <div class="lettera">
+                <p class="intro-corsivo">Finalmente ci siamo...</p>
+                
+                <h1 class="titolo-18">I MIEI<br><span class="numero-oro">18</span><br>ANNI</h1>
+                
+                <div class="dettagli-evento">
+                    <p>📅 8 LUGLIO 2026</p>
+                    <p>🕒 ORE 20:30</p>
+                    <p>📍 TENUTA IL FEUDO, CURINGA (CZ)</p>
+                </div>
+
+                <p class="frase-chiusura">La tua presenza renderà questa serata ancora più speciale.<br>
+                <p class="frase-chiusura">Conferma entro il 22/06<br>
+                    <span class="ti-aspetto">Ti aspetto, Sofia!</span>
+                </p>
+
+                <div class="pulsantiera">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Tenuta+Il+Feudo,+Curinga&query_place_id=ChIJP1qqHwDjPxMRn-E9A2EZMEs" target="_blank" class="btn btn-mappa">📍 Posizione</a>
+                    <a href="https://wa.me/393936084535?text=Ciao%20Sofia!%20Confermo%20con%20piacere%20la%20mia%20presenza%20al%20tuo%2018%C2%B0%20compleanno!" target="_blank" class="btn btn-whatsapp">💬 Conferma</a>
+                </div>
+            </div>
+
+            <div class="busta-fronte"></div>
+            
+            <div class="busta-lembo-superiore">
+                <img src="immagini/sigillo.png" alt="Sigillo" class="sigillo">
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // --- 1. Gestione Apertura Busta ---
+        const sigillo = document.querySelector('.sigillo');
+        const busta = document.querySelector('.busta');
+
+        sigillo.addEventListener('click', () => {
+            busta.classList.add('aperta');
+        });
+
+        // --- 2. Gestione Particelle Dinamiche ---
+        function creaParticella() {
+            const container = document.querySelector('.container-invito');
+            const particella = document.createElement('div');
+            particella.classList.add('particella');
+            
+            const types = ['glitter', 'bokeh', 'petal'];
+            const type = types[Math.floor(Math.random() * types.length)];
+            particella.classList.add(type);
+            
+            // Proprietà specifiche basate sul tipo
+            if (type === 'glitter') {
+                const size = Math.random() * 3 + 3; // 3px a 6px
+                particella.style.width = `${size}px`;
+                particella.style.height = `${size}px`;
+                particella.style.animationDuration = `${Math.random() * 3 + 3}s`; // 3 a 6s
+                particella.style.left = `${Math.random() * 100}vw`; // A tutta larghezza
+                particella.style.zIndex = '0';
+            } else if (type === 'bokeh') {
+                const size = Math.random() * 30 + 30; // 30px a 60px
+                particella.style.width = `${size}px`;
+                particella.style.height = `${size}px`;
+                particella.style.filter = `blur(${Math.random() * 5 + 5}px)`; // 5 a 10px blur
+                particella.style.animationDuration = `${Math.random() * 10 + 10}s`; // 10 a 20s
+                particella.style.left = `${Math.random() * 80}vw`; // Più concentrati al centro
+                particella.style.zIndex = '1';
+            } else if (type === 'petal') {
+                const width = Math.random() * 6 + 4; // 4px a 10px
+                const height = Math.random() * 10 + 6; // 6px a 16px
+                particella.style.width = `${width}px`;
+                particella.style.height = `${height}px`;
+                particella.style.animationDuration = `${Math.random() * 5 + 5}s`; // 5 a 10s
+                particella.style.left = `${Math.random() * 100}vw`;
+                particella.style.zIndex = '0';
+            }
+            
+            particella.style.animationDelay = `${Math.random() * 5}s`;
+            
+            container.appendChild(particella);
+            
+            setTimeout(() => {
+                particella.remove();
+            }, 20000); 
+        }
+
+        setInterval(creaParticella, 150);
+    </script>
+</body>
+</html>
